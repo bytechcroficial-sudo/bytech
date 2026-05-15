@@ -54,7 +54,6 @@
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
     button,input,textarea{font:inherit}
-
     h1,h2,h3,h4,p,span,small,a,button{overflow-wrap:anywhere;word-break:break-word;}
 
     .container{width:min(100% - 32px, var(--container));margin:0 auto}
@@ -89,7 +88,7 @@
       will-change:transform
     }
     .btn:hover{transform:translateY(-2px)}
-    .btn:focus-visible,.menu-toggle:focus-visible,.qty-btn:focus-visible,.remove-btn:focus-visible,.cart-fab:focus-visible,.field:focus-visible,a:focus-visible,.category-card:focus-visible,.product-card:focus-visible,.thumb:focus-visible,.cat-btn:focus-visible,.subcat-btn:focus-visible{
+    .btn:focus-visible,.menu-toggle:focus-visible,.qty-btn:focus-visible,.remove-btn:focus-visible,.cart-fab:focus-visible,.field:focus-visible,a:focus-visible,.category-item button:focus-visible,.product-card:focus-visible,.thumb:focus-visible,.cat-btn:focus-visible,.subcat-btn:focus-visible,.search-clear:focus-visible,.view-btn:focus-visible{
       outline:3px solid rgba(77,163,255,.45);
       outline-offset:3px;
     }
@@ -133,6 +132,63 @@
     .tech-media{aspect-ratio:1 / 1.08;border-radius:26px;overflow:hidden;position:relative;background:#101829;min-height:520px}
     .tech-media img{width:100%;height:100%;object-fit:contain;object-position:center;transform:scale(1);padding:18px}
 
+    .search-shell{
+      max-width:1020px;
+      margin:0 auto 12px;
+    }
+
+    .search-bar{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.05);
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+      position:sticky;
+      top:96px;
+      z-index:900;
+    }
+
+    .search-bar i{
+      color:var(--muted);
+      flex-shrink:0;
+    }
+
+    #globalSearch{
+      width:100%;
+      height:46px;
+      border:0;
+      background:transparent;
+      color:#fff;
+      outline:none;
+      padding:0;
+    }
+
+    #globalSearch::placeholder{
+      color:rgba(167,179,199,.78);
+    }
+
+    .search-clear{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .search-help{
+      margin:10px 4px 0;
+      color:var(--muted);
+      font-size:.92rem;
+      line-height:1.5;
+    }
+
     .layout-main{display:grid;grid-template-columns:280px 1fr;gap:18px;align-items:start}
 
     .sidebar-panel{position:sticky;top:104px;border-radius:28px;padding:18px;display:flex;flex-direction:column;gap:14px;}
@@ -142,8 +198,9 @@
     .sidebar-search{display:grid;gap:10px}
     .sidebar-search input{width:100%;border-radius:14px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.05);color:#fff;padding:12px 14px;outline:none;}
     .category-list{display:grid;gap:10px}
-    .category-item{border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);overflow:hidden;}
-    .cat-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;border:0;background:transparent;color:var(--text);cursor:pointer;font-weight:700;text-align:left;}
+    .category-item{border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);overflow:hidden;transition:transform .2s ease,border-color .2s ease,background .2s ease}
+    .category-item:hover{transform:translateY(-2px)}
+    .cat-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;border:0;background:transparent;color:var(--text);cursor:pointer;font-weight:700;text-align:left;min-height:54px}
     .cat-btn span{display:flex;align-items:center;gap:10px}
     .cat-count{color:var(--muted);font-size:.82rem;font-weight:700}
     .cat-chevron{transition:transform .2s ease;color:var(--muted)}
@@ -156,10 +213,7 @@
       max-height:0;
       overflow:hidden;
       opacity:0;
-      transition:
-        max-height .35s ease,
-        opacity .25s ease,
-        padding .25s ease;
+      transition:max-height .35s ease,opacity .25s ease,padding .25s ease;
     }
 
     .category-item.open .subcategory-list{
@@ -168,10 +222,7 @@
       padding:12px;
     }
 
-    .category-item.open .cat-chevron{
-      transform:rotate(180deg);
-    }
-    .subcat-btn{width:100%;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:var(--text);padding:11px 12px;border-radius:14px;cursor:pointer;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+    .subcat-btn{width:100%;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:var(--text);padding:11px 12px;border-radius:14px;cursor:pointer;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left}
     .subcat-btn.active,.subcat-btn:hover{background:linear-gradient(135deg, rgba(77,163,255,.18), rgba(124,92,255,.14));border-color:rgba(77,163,255,.28)}
     .sidebar-actions{display:grid;gap:10px;padding-top:2px}
 
@@ -275,6 +326,20 @@
     .contact-item strong{display:block;margin-bottom:4px}
     .contact-item span{color:var(--muted);line-height:1.65}
 
+    .admin-hidden-link{
+      position:fixed;
+      left:-9999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-12px)}
+    }
+
     @media(max-width:1100px){
       .products-grid.view-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .products-grid.view-compact{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -309,9 +374,9 @@
       .menu-toggle{display:inline-flex}
       .nav-actions .btn-whatsapp{display:none}
       .hero{padding:96px 0 36px}
-      .hero-grid{gap:18px}
-      .hero h1{font-size:clamp(2rem,10vw,3rem);line-height:1;max-width:100%;margin:14px 0 14px}
-      .hero p{font-size:.98rem;line-height:1.65;margin-bottom:18px}
+      .hero-grid{gap:18px;grid-template-columns:1fr}
+      .hero h1{font-size:clamp(2rem,10vw,3rem);line-height:1;max-width:100%;margin:14px 0 14px;text-align:center}
+      .hero p{font-size:.98rem;line-height:1.65;margin-bottom:18px;text-align:center;max-width:100%}
       .hero-stats{grid-template-columns:1fr;margin-top:18px}
       .hero-visual{min-height:auto}
       .tech-card{padding:10px;width:100%}
@@ -320,15 +385,37 @@
       .orb{display:none}
       .hero-actions{display:grid;grid-template-columns:1fr}
       .hero-actions .btn{width:100%}
-      .grid-6,.products-grid,.benefits-grid{grid-template-columns:1fr}
-      .form-row.two{grid-template-columns:1fr}
-      .product-meta{flex-direction:column;align-items:flex-start}
-      .actions{flex-direction:column}
-      .actions .btn{width:100%;min-width:0}
+      .layout-main{grid-template-columns:1fr}
+      .search-bar{
+        top:78px;
+        padding:10px 12px;
+        border-radius:18px;
+      }
+      .search-help{
+        font-size:.88rem;
+      }
+      .products-grid{
+        grid-template-columns:1fr !important;
+      }
+      .products-grid.view-list .product-card{
+        grid-template-columns:1fr;
+      }
+      .product-card{
+        border-radius:22px;
+      }
+      .product-body{
+        padding:18px;
+      }
+      .actions{
+        flex-direction:column;
+      }
+      .actions .btn{
+        width:100%;
+        min-width:0;
+      }
       .checkout-actions{grid-template-columns:1fr}
       .cart-panel{width:100vw}
       .category-card,.product-body,.benefit-card,.form-card,.contact-info{padding:18px}
-      .category-icon{width:52px;height:52px;font-size:1rem}
       .section-title{font-size:clamp(1.7rem,8vw,2.6rem)}
       .section-desc{font-size:.96rem;line-height:1.65}
       .product-card h3,.benefit-card h3,.category-card h3{font-size:1rem}
@@ -337,6 +424,30 @@
       .cart-count{min-width:22px;height:22px;top:-7px;right:-7px;font-size:.72rem}
       .cart-head,.cart-body,.cart-foot{padding-left:14px;padding-right:14px}
       .form-card,.contact-info{padding:18px}
+      .form-row.two{grid-template-columns:1fr}
+      .products-grid.view-compact{
+        grid-template-columns:1fr;
+      }
+      .sidebar-panel{
+        width:min(92vw, 360px);
+      }
+      .product-subtitle{
+        font-size:.84rem;
+      }
+      .summary-row{
+        font-size:.95rem;
+      }
+      .summary-row.total{
+        font-size:1rem;
+      }
+      .qty-row{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .qty-controls{
+        width:100%;
+        justify-content:flex-start;
+      }
     }
 
     @media(max-width:520px){
@@ -348,34 +459,6 @@
       .tech-media{min-height:280px}
       .cart-item{grid-template-columns:60px 1fr}
       .cart-item img{width:60px;height:60px}
-      .qty-row{flex-direction:column;align-items:flex-start}
-      .qty-controls{width:100%;justify-content:flex-start}
-      .summary-row{font-size:.95rem}
-      .summary-row.total{font-size:1rem}
-    }
-
-    .admin-hidden-link{
-      position:fixed;
-      left:-9999px;
-      top:auto;
-      width:1px;
-      height:1px;
-      overflow:hidden;
-    }
-
-    #productSearch{
-      width:100%;
-      height:52px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.09);
-      background:rgba(255,255,255,.05);
-      color:#fff;
-      padding:12px 14px;
-      outline:none;
-    }
-
-    #productSearch::placeholder{
-      color:rgba(167,179,199,.78);
     }
   </style>
 </head>
@@ -442,15 +525,25 @@
         </div>
       </div>
     </section>
-    <div style="max-width:1020px;margin:0 auto 10px;">
-      <input
-        type="text"
-        id="globalSearch"
-        class="field"
-        placeholder="Buscar productos o categorías..."
-      >
+
+    <div class="search-shell">
+      <div class="search-bar glass">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+          type="text"
+          id="globalSearch"
+          placeholder="Buscar productos, categorías o subcategorías..."
+          autocomplete="off"
+        >
+        <button type="button" id="clearSearchBtn" class="search-clear" aria-label="Limpiar búsqueda">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <p class="search-help">
+        Busca por nombre, categoría o subcategoría. Los resultados se actualizan mientras escribes.
+      </p>
     </div>
-    </div>
+
     <section class="section" id="categorias">
       <div class="container">
         <div class="reveal">
@@ -492,12 +585,9 @@
             </div>
 
             <div class="section-tools reveal">
-
               <button class="btn btn-ghost sidebar-mobile-toggle" id="openSidebarBtn" type="button">
                 <i class="fa-solid fa-filter"></i> Categorías
               </button>
-
-
 
               <div class="view-controls" aria-label="Cambiar vista de productos">
                 <button class="view-btn active" type="button" data-view="grid">
@@ -512,7 +602,6 @@
                   <i class="fa-solid fa-table-cells-large"></i> Compacto
                 </button>
               </div>
-
             </div>
 
             <div class="products-grid view-grid" id="featuredProducts" style="margin-top:26px;">
@@ -677,7 +766,6 @@
     const heroFeaturedImage = document.getElementById('heroFeaturedImage');
     const categoryList = document.getElementById('categoryList');
     const categorySearch = document.getElementById('categorySearch');
-    const productSearch = document.getElementById('productSearch');
     const categoryTitle = document.getElementById('categoryTitle');
     const categoryText = document.getElementById('categoryText');
     const sidebarPanel = document.getElementById('sidebarPanel');
@@ -686,6 +774,7 @@
     const closeSidebarBtn = document.getElementById('closeSidebarBtn');
     const showAllBtn = document.getElementById('showAllBtn');
     const globalSearch = document.getElementById('globalSearch');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
 
     const CATEGORY_PAGE = 'categoria.html';
 
@@ -741,6 +830,15 @@
         .replace(/[\u0300-\u036f]/g, '')
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '');
+    }
+
+    function escapeHtml(text = '') {
+      return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     }
 
     function getCart() {
@@ -804,13 +902,11 @@
       const stockDisponible = Number(product.stock || 0);
       const cantidadActual = existing ? Number(existing.qty || 0) : 0;
 
-      // Si no hay stock
       if (stockDisponible <= 0) {
         showToast('Producto sin stock');
         return false;
       }
 
-      // Si ya llegó al límite
       if (cantidadActual >= stockDisponible) {
         showToast(`Solo hay ${stockDisponible} unidades disponibles`);
         return false;
@@ -861,9 +957,9 @@
 
         return `
           <div class="cart-item">
-            <img src="${item.image}" alt="${item.name}">
+            <img src="${item.image}" alt="${escapeHtml(item.name)}">
             <div>
-              <h4>${item.name}</h4>
+              <h4>${escapeHtml(item.name)}</h4>
               <small>${money(item.price)}</small>
               <div class="qty-row">
                 <div class="qty-controls">
@@ -904,10 +1000,12 @@
 
         item.qty += 1;
       }
+
       if (action === 'decrease') {
         item.qty -= 1;
         if (item.qty <= 0) cart.splice(index, 1);
       }
+
       if (action === 'remove') cart.splice(index, 1);
 
       saveCart(cart);
@@ -1003,12 +1101,10 @@
         subcategory: p.subcategory || '',
         slug: p.slug || p.id || '',
         title: p.name || p.title || 'Sin nombre',
-
         originalPrice: Number(p.price) || 0,
         salePrice: Number(p.salePrice || 0),
         discount: Number(p.discount || 0),
         price: Number(p.salePrice || p.price) || 0,
-
         description: p.description || '',
         brand: p.brand || 'Bytech',
         badge: p.featured ? 'Destacado' : (p.badge || p.subcategory || 'Producto'),
@@ -1025,7 +1121,6 @@
     let currentView = localStorage.getItem('bytechProductView') || 'grid';
     let allProducts = [];
     let currentSearch = '';
-    let currentProductSearch = '';
 
     function setView(view) {
       currentView = view;
@@ -1071,18 +1166,7 @@
       window.location.href = url.toString();
     }
 
-    globalSearch?.addEventListener('keydown', (e) => {
-
-      if (e.key !== 'Enter') return;
-
-      const value = globalSearch.value.trim();
-
-      if (!value) return;
-
-      const search = slugify(value);
-
-      window.location.href = `categoria.html?search=${encodeURIComponent(search)}`;
-    });
+    window.goToCategory = goToCategory;
 
     function renderCategories() {
       const search = normalizeText(currentSearch);
@@ -1097,7 +1181,9 @@
         const matchesSearch =
           !search ||
           normalizeText(cat).includes(search) ||
-          normalizeText(sub).includes(search);
+          normalizeText(sub).includes(search) ||
+          normalizeText(product.title).includes(search) ||
+          normalizeText(product.description).includes(search);
 
         if (!matchesSearch) return;
 
@@ -1136,10 +1222,10 @@
 
         return `
           <div class="category-item">
-            <button class="cat-btn" type="button">
+            <button class="cat-btn" type="button" data-cat="${escapeHtml(cat)}">
               <span>
                 <i class="fa-solid fa-folder"></i>
-                ${cat}
+                ${escapeHtml(cat)}
               </span>
 
               <div style="display:flex;align-items:center;gap:10px;">
@@ -1152,7 +1238,8 @@
               <button
                 type="button"
                 class="subcat-btn"
-                onclick="goToCategory('${cat}','all')"
+                data-cat="${escapeHtml(cat)}"
+                data-subcat="all"
               >
                 <span>Ver todo</span>
                 <span class="cat-count">${data.count}</span>
@@ -1162,9 +1249,10 @@
                 <button
                   type="button"
                   class="subcat-btn"
-                  onclick="goToCategory('${cat}','${sub}')"
+                  data-cat="${escapeHtml(cat)}"
+                  data-subcat="${escapeHtml(sub)}"
                 >
-                  <span>${sub}</span>
+                  <span>${escapeHtml(sub)}</span>
                   <span class="cat-count">${count}</span>
                 </button>
               `).join('')}
@@ -1172,25 +1260,32 @@
           </div>
         `;
       }).join('');
-
-      const categoryItems = document.querySelectorAll('.category-item');
-
-      categoryItems.forEach(item => {
-        const button = item.querySelector('.cat-btn');
-
-        button.addEventListener('click', () => {
-          const isOpen = item.classList.contains('open');
-
-          categoryItems.forEach(el => {
-            el.classList.remove('open');
-          });
-
-          if (!isOpen) {
-            item.classList.add('open');
-          }
-        });
-      });
     }
+
+    categoryList?.addEventListener('click', (e) => {
+      const subBtn = e.target.closest('.subcat-btn');
+      if (subBtn) {
+        e.stopPropagation();
+        goToCategory(subBtn.dataset.cat, subBtn.dataset.subcat);
+        return;
+      }
+
+      const catBtn = e.target.closest('.cat-btn');
+      if (!catBtn) return;
+
+      const item = catBtn.closest('.category-item');
+      if (!item) return;
+
+      const isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.category-item').forEach(el => {
+        el.classList.remove('open');
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    });
 
     function renderFeaturedProducts(products) {
       featuredProducts.innerHTML = '';
@@ -1211,16 +1306,16 @@
 
         article.innerHTML = `
           <div class="product-media">
-            <span class="badge">${product.badge || 'Producto'}</span>
-            <img src="${product.image}" alt="${product.title}" loading="lazy" decoding="async" onerror="this.src='img/logo.png'">
+            <span class="badge">${escapeHtml(product.badge || 'Producto')}</span>
+            <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" loading="lazy" decoding="async" onerror="this.src='img/logo.png'">
           </div>
           <div class="product-body">
-            <h3>${product.title}</h3>
+            <h3>${escapeHtml(product.title)}</h3>
             <div class="product-subtitle">
               <i class="fa-solid fa-tag"></i>
-              ${product.category}${product.subcategory ? ` · ${product.subcategory}` : ''}
+              ${escapeHtml(product.category)}${product.subcategory ? ` · ${escapeHtml(product.subcategory)}` : ''}
             </div>
-            <p>${product.description || ''}</p>
+            <p>${escapeHtml(product.description || '')}</p>
             <div class="price">
               ${
                 hasDiscount
@@ -1290,26 +1385,19 @@
 
     function applyFeaturedRender() {
       const search = normalizeText(currentSearch);
-      const productSearchText = normalizeText(currentProductSearch);
 
       const filtered = allProducts.filter(product => {
         const isFeatured = product.featured === true;
 
-        const matchCategory =
+        const matchSearch =
           !search ||
           normalizeText(product.title).includes(search) ||
           normalizeText(product.category).includes(search) ||
-          normalizeText(product.subcategory).includes(search);
+          normalizeText(product.subcategory).includes(search) ||
+          normalizeText(product.brand).includes(search) ||
+          normalizeText(product.description).includes(search);
 
-        const matchProduct =
-          !productSearchText ||
-          normalizeText(product.title).includes(productSearchText) ||
-          normalizeText(product.category).includes(productSearchText) ||
-          normalizeText(product.subcategory).includes(productSearchText) ||
-          normalizeText(product.brand).includes(productSearchText) ||
-          normalizeText(product.description).includes(productSearchText);
-
-        return isFeatured && matchCategory && matchProduct;
+        return isFeatured && matchSearch;
       });
 
       renderFeaturedProducts(filtered);
@@ -1321,22 +1409,47 @@
       }
     }
 
-    categorySearch?.addEventListener('input', () => {
-      currentSearch = categorySearch.value;
+    let searchTimer = null;
+
+    function runSearch() {
+      currentSearch = globalSearch.value.trim();
       renderCategories();
       applyFeaturedRender();
+    }
+
+    globalSearch?.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(runSearch, 150);
     });
 
-    productSearch?.addEventListener('input', () => {
-      currentProductSearch = productSearch.value;
+    globalSearch?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        globalSearch.value = '';
+        currentSearch = '';
+        renderCategories();
+        applyFeaturedRender();
+      }
+    });
+
+    clearSearchBtn?.addEventListener('click', () => {
+      globalSearch.value = '';
+      currentSearch = '';
+      renderCategories();
+      applyFeaturedRender();
+      globalSearch.focus();
+    });
+
+    categorySearch?.addEventListener('input', () => {
+      currentSearch = categorySearch.value;
+      globalSearch.value = currentSearch;
+      renderCategories();
       applyFeaturedRender();
     });
 
     showAllBtn?.addEventListener('click', () => {
       currentSearch = '';
-      currentProductSearch = '';
       if (categorySearch) categorySearch.value = '';
-      if (productSearch) productSearch.value = '';
+      if (globalSearch) globalSearch.value = '';
       renderCategories();
       applyFeaturedRender();
       closeSidebar();
