@@ -23,6 +23,7 @@ const PASS = "admin1234";
 
 function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization || "";
+
   const token = authHeader.startsWith("Bearer ")
     ? authHeader.slice(7)
     : null;
@@ -36,7 +37,9 @@ function authMiddleware(req, res, next) {
 
   try {
     const decoded = jwt.verify(token, SECRET);
+
     req.user = decoded;
+
     next();
   } catch (error) {
     return res.status(401).json({
@@ -112,7 +115,7 @@ function safe(str) {
 |--------------------------------------------------------------------------
 */
 
-app.use("/public", express.static(PUBLIC_DIR));
+app.use(express.static(__dirname));
 
 /*
 |--------------------------------------------------------------------------
@@ -124,7 +127,9 @@ app.post("/api/login", (req, res) => {
   const { user, pass } = req.body;
 
   if (user === USER && pass === PASS) {
-    const token = jwt.sign({ user }, SECRET, { expiresIn: "2h" });
+    const token = jwt.sign({ user }, SECRET, {
+      expiresIn: "2h"
+    });
 
     return res.json({
       success: true,
@@ -145,10 +150,10 @@ app.post("/api/login", (req, res) => {
 */
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "editor.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/editor.html", (req, res) => {
+app.get("/editor", (req, res) => {
   res.sendFile(path.join(__dirname, "editor.html"));
 });
 
@@ -161,6 +166,7 @@ app.get("/editor.html", (req, res) => {
 app.get("/api/productos", authMiddleware, (req, res) => {
   try {
     const raw = fs.readFileSync(PRODUCTS_PATH, "utf8");
+
     const data = JSON.parse(raw);
 
     res.json(data);
@@ -211,6 +217,7 @@ app.post(
   async (req, res) => {
     try {
       const id = safe(req.body.id);
+
       const subcategory = safe(req.body.subcategory);
 
       if (!id) {
@@ -230,39 +237,58 @@ app.post(
       ensureDir(folder);
 
       let coverPath = "";
+
       const galleryPaths = [];
 
       const coverFile = req.files?.cover?.[0];
 
       if (coverFile) {
-        const ext = path.extname(coverFile.originalname).toLowerCase() || ".webp";
+        const ext =
+          path.extname(coverFile.originalname).toLowerCase() || ".webp";
+
         const filename = `cover${ext}`;
 
-        fs.writeFileSync(path.join(folder, filename), coverFile.buffer);
+        fs.writeFileSync(
+          path.join(folder, filename),
+          coverFile.buffer
+        );
 
-        coverPath = `/public/images/${subcategory || "productos"}/${id}/${filename}`;
+        coverPath = `/public/images/${
+          subcategory || "productos"
+        }/${id}/${filename}`;
       }
 
       const gallery = req.files?.gallery || [];
 
       gallery.forEach((file, index) => {
-        const ext = path.extname(file.originalname).toLowerCase() || ".webp";
+        const ext =
+          path.extname(file.originalname).toLowerCase() || ".webp";
+
         const filename = `${index + 1}${ext}`;
 
-        fs.writeFileSync(path.join(folder, filename), file.buffer);
+        fs.writeFileSync(
+          path.join(folder, filename),
+          file.buffer
+        );
 
         galleryPaths.push(
-          `/public/images/${subcategory || "productos"}/${id}/${filename}`
+          `/public/images/${
+            subcategory || "productos"
+          }/${id}/${filename}`
         );
       });
 
       const existingFiles = fs.readdirSync(folder);
 
       if (!coverPath) {
-        const existingCover = existingFiles.find(file => file.startsWith("cover"));
+        const existingCover = existingFiles.find(file =>
+          file.startsWith("cover")
+        );
 
         if (existingCover) {
-          coverPath = `/public/images/${subcategory || "productos"}/${id}/${existingCover}`;
+          coverPath = `/public/images/${
+            subcategory || "productos"
+          }/${id}/${existingCover}`;
         }
       }
 
@@ -272,7 +298,9 @@ app.post(
           .sort()
           .forEach(file => {
             galleryPaths.push(
-              `/public/images/${subcategory || "productos"}/${id}/${file}`
+              `/public/images/${
+                subcategory || "productos"
+              }/${id}/${file}`
             );
           });
       }
@@ -301,8 +329,8 @@ app.post(
 |--------------------------------------------------------------------------
 */
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Servidor iniciado en http://localhost:${PORT}`);
+  console.log(`Servidor iniciado en puerto ${PORT}`);
 });
