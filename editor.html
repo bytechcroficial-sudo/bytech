@@ -1135,8 +1135,14 @@ function fillForm(product) {
   renderSubcategorySelect(product.subcategory || "");
 
   formEls.price.value = product.price || "";
-  formEls.salePrice.value = product.salePrice || (product.discount ? Math.round(Number(product.price || 0) * (1 - Number(product.discount || 0) / 100)) : "");
-  formEls.discount.value = product.discount || calcDiscount(product.price, product.salePrice);
+  formEls.salePrice.value =
+  product.salePrice ?? (
+    product.discount
+      ? Math.round(Number(product.price || 0) * (1 - Number(product.discount || 0) / 100))
+      : ""
+  );
+  formEls.discount.value =
+  product.discount ?? calcDiscount(product.price, product.salePrice);
 
   formEls.stock.value = product.stock || "";
   formEls.status.value = product.status || "active";
@@ -1186,7 +1192,13 @@ function getFormProduct(media = null) {
     brand: getSelectedBrand(),
     category: getSelectedCategory(),
     subcategory: getSelectedSubcategory(),
+
     price: Number(formEls.price.value || 0),
+
+    // AGREGAR ESTO
+    salePrice: Number(formEls.salePrice.value || 0),
+    discount: Number(formEls.discount.value || 0),
+
     stock: Number(formEls.stock.value || 0),
     status: formEls.status.value,
     featured: formEls.featured.checked,
