@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#070b14" />
+  <meta name="description" content="Página de producto premium de Bytech." />
+
+  <meta property="og:title" content="Bytech | Producto" />
+  <meta property="og:description" content="Producto premium de Bytech con galería de 4 imágenes y compra por WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Producto | Bytech</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg:#070b14;
+      --card:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.08);
+      --text:#f4f7fb;
+      --muted:#a7b3c7;
+      --accent:#4da3ff;
+      --accent2:#7c5cff;
+      --shadow:0 24px 60px rgba(0,0,0,.35);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(77,163,255,.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(124,92,255,.16), transparent 28%),
+        linear-gradient(180deg,#050812 0%,#09111f 45%,#070b14 100%);
+      color:var(--text);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button,input,textarea{font:inherit}
+
+    h1, h2, h3, h4, p, span, small, a, button {
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+
+    .container{
+      width:min(1200px, calc(100% - 32px));
+      margin:auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(18px);
+      background:rgba(6,10,18,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav{
+      height:84px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:800;
+      letter-spacing:-.04em;
+      font-size:1.1rem;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      overflow:hidden;
+      background:#0f1729;
+      display:grid;
+      place-items:center;
+      padding:6px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      flex-shrink:0;
+    }
+
+    .brand-mark img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+
+    .header-link{
+      color:var(--muted);
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+    }
+
+    .hero{
+      padding:54px 0 26px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      backdrop-filter:blur(18px);
+    }
+
+    h1{
+      font-size:clamp(2.2rem,4vw,4.2rem);
+      line-height:.96;
+      margin:18px 0 12px;
+      letter-spacing:-.06em;
+      max-width:760px;
+    }
+
+    .hero p{
+      color:var(--muted);
+      max-width:700px;
+      line-height:1.75;
+      font-size:1.02rem;
+      margin:0;
+    }
+
+    .page-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:22px;
+      margin-top:28px;
+      align-items:start;
+    }
+
+    .glass{
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+    }
+
+    .gallery-card,
+    .info-card{
+      border-radius:28px;
+      overflow:hidden;
+    }
+
+    .gallery-card{
+      padding:16px;
+    }
+
+    .main-image{
+      position:relative;
+      border-radius:22px;
+      overflow:hidden;
+      background:#0e1626;
+      aspect-ratio:1 / .92;
+    }
+
+    .main-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .image-badge{
+      position:absolute;
+      top:14px;
+      left:14px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(8,12,20,.62);
+      border:1px solid rgba(255,255,255,.1);
+      color:#fff;
+      font-size:.8rem;
+      backdrop-filter:blur(12px);
+      z-index:2;
+    }
+
+    .thumbs{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .thumb{
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      overflow:hidden;
+      padding:0;
+      cursor:pointer;
+      aspect-ratio:1 / 1;
+      transition:.25s ease;
+    }
+
+    .thumb:hover,
+    .thumb.active{
+      border-color:rgba(77,163,255,.3);
+      transform:translateY(-2px);
+    }
+
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .info-card{
+      padding:24px;
+    }
+
+    .product-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+    }
+
+    .product-top h2{
+      margin:0;
+      font-size:1.7rem;
+      letter-spacing:-.04em;
+    }
+
+    .product-subtitle{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      margin-top:10px;
+      color:#b7cdf3;
+      font-size:.9rem;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(77,163,255,.1);
+      border:1px solid rgba(77,163,255,.16);
+    }
+
+    .price{
+      font-size:1.35rem;
+      font-weight:800;
+      color:#d6e7ff;
+      white-space:nowrap;
+    }
+
+    .description{
+      margin:18px 0 20px;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:22px;
+    }
+
+    .btn{
+      flex:1;
+      border:0;
+      border-radius:16px;
+      padding:14px 16px;
+      cursor:pointer;
+      font-weight:700;
+      transition:.25s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-width:160px;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+    .btn:focus-visible,
+    .thumb:focus-visible,
+    .cart-fab:focus-visible,
+    .qty-btn:focus-visible,
+    .remove-btn:focus-visible{
+      outline:3px solid rgba(77,163,255,.45);
+      outline-offset:3px;
+    }
+
+    .btn:disabled{
+      cursor:not-allowed;
+      opacity:.6;
+      transform:none;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#fff;
+    }
+
+    .btn-whatsapp{
+      background:linear-gradient(135deg,#18c964,#10a84f);
+      color:#fff;
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .mini{
+      padding:16px;
+      border-radius:20px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .mini strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:.92rem;
+    }
+
+    .mini span{
+      color:var(--muted);
+      line-height:1.55;
+      font-size:.92rem;
+    }
+
+    .features-wrap{
+      margin-top:18px;
+    }
+
+    .section-title{
+      margin:0 0 12px;
+      font-size:1.15rem;
+      letter-spacing:-.03em;
+    }
+
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .feature-card{
+      padding:16px;
+      border-radius:20px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      height:100%;
+    }
+
+    .feature-card h4{
+      margin:0 0 8px;
+      font-size:.98rem;
+      letter-spacing:-.02em;
+    }
+
+    .feature-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:.94rem;
+    }
+
+    .footer{
+      margin-top:72px;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:30px 0;
+      text-align:center;
+      color:var(--muted);
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(16px);
+      transition:opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .cart-fab{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:1200;
+      width:60px;
+      height:60px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#fff;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      box-shadow:0 18px 40px rgba(77,163,255,.28);
+      transition:.25s ease;
+    }
+
+    .cart-fab.hide{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transform:scale(.9);
+    }
+
+    .cart-count{
+      position:absolute;
+      top:-8px;
+      right:-8px;
+      min-width:24px;
+      height:24px;
+      padding:0 6px;
+      border-radius:999px;
+      background:#0ef1a1;
+      color:#07101c;
+      font-size:.78rem;
+      font-weight:800;
+      display:grid;
+      place-items:center;
+      border:2px solid #07101c;
+    }
+
+    .cart-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.46);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:.25s ease;
+      z-index:1180;
+    }
+
+    .cart-backdrop.open{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .cart-panel{
+      position:fixed;
+      top:0;
+      right:0;
+      height:100%;
+      width:min(420px,100vw);
+      background:#09111f;
+      border-left:1px solid rgba(255,255,255,.08);
+      transform:translateX(100%);
+      transition:transform .3s ease;
+      z-index:1190;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .cart-panel.open{
+      transform:translateX(0);
+    }
+
+    .cart-head{
+      padding:22px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .cart-body{
+      padding:18px;
+      overflow:auto;
+      flex:1;
+    }
+
+    .cart-empty{
+      padding:28px 16px;
+      text-align:center;
+      color:var(--muted);
+      border:1px dashed rgba(255,255,255,.12);
+      border-radius:20px;
+      background:rgba(255,255,255,.03);
+      margin-bottom:12px;
+    }
+
+    .cart-item{
+      display:grid;
+      grid-template-columns:72px 1fr;
+      gap:12px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      margin-bottom:12px;
+    }
+
+    .cart-item img{
+      width:72px;
+      height:72px;
+      border-radius:16px;
+      object-fit:cover;
+    }
+
+    .cart-item h4{
+      margin:0 0 4px;
+      font-size:.98rem;
+    }
+
+    .cart-item small{
+      color:var(--muted);
+    }
+
+    .qty-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:10px;
+    }
+
+    .qty-controls{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .qty-btn{
+      width:32px;
+      height:32px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      cursor:pointer;
+    }
+
+    .remove-btn{
+      border:0;
+      background:transparent;
+      color:#ff8c8c;
+      cursor:pointer;
+      padding:0;
+      font-weight:700;
+    }
+
+    .cart-foot{
+      padding:18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.04));
+    }
+
+    .summary{
+      display:grid;
+      gap:10px;
+      margin-bottom:16px;
+      color:#dfe7f4;
+    }
+
+    .summary-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .summary-row.total{
+      font-size:1.1rem;
+      font-weight:800;
+    }
+
+    .checkout-fields{
+      display:grid;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .field{
+      width:100%;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.09);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      padding:14px 16px;
+      outline:none;
+    }
+
+    .field::placeholder{
+      color:rgba(167,179,199,.8);
+    }
+
+    .toast{
+      position:fixed;
+      bottom:92px;
+      right:20px;
+      background:rgba(9,17,31,.96);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      padding:14px 16px;
+      border-radius:16px;
+      z-index:1300;
+      opacity:0;
+      transform:translateY(10px);
+      pointer-events:none;
+      transition:.25s ease;
+      max-width:280px;
+    }
+
+    .toast.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:800;
+      line-height:1;
+    }
+
+    .featured{
+      background:rgba(14,241,161,.12);
+      color:#85ffd1;
+      border:1px solid rgba(14,241,161,.22);
+    }
+
+    @media(max-width:900px){
+      .page-grid{grid-template-columns:1fr}
+      .features-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:700px){
+      .container{
+        width:calc(100% - 20px);
+      }
+
+      .nav{
+        height:70px;
+      }
+
+      .brand{
+        gap:10px;
+        font-size:1rem;
+      }
+
+      .brand-mark{
+        width:40px;
+        height:40px;
+        padding:4px;
+        border-radius:14px;
+      }
+
+      .header-link{
+        font-size:.9rem;
+        gap:6px;
+      }
+
+      .hero{
+        padding-top:34px;
+      }
+
+      h1{
+        font-size:clamp(1.8rem, 7vw, 2.5rem);
+        line-height:1.02;
+        margin-top:14px;
+      }
+
+      .hero p{
+        font-size:.95rem;
+        line-height:1.6;
+      }
+
+      .page-grid{
+        gap:16px;
+      }
+
+      .gallery-card,
+      .info-card{
+        border-radius:22px;
+      }
+
+      .gallery-card{
+        padding:12px;
+      }
+
+      .main-image{
+        aspect-ratio:1 / 1;
+      }
+
+      .thumbs{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:8px;
+      }
+
+      .product-top{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .product-top h2{
+        font-size:1.35rem;
+      }
+
+      .price{
+        white-space:normal;
+        font-size:1.1rem;
+      }
+
+      .description{
+        font-size:.94rem;
+        line-height:1.6;
+        margin:16px 0 18px;
+      }
+
+      .actions{
+        display:grid;
+        grid-template-columns:1fr;
+      }
+
+      .btn{
+        min-width:0;
+        width:100%;
+        padding:12px 14px;
+        font-size:.95rem;
+      }
+
+      .mini-grid{
+        grid-template-columns:1fr;
+      }
+
+      .mini{
+        padding:14px;
+      }
+
+      .mini strong,
+      .mini span{
+        font-size:.88rem;
+      }
+
+      .features-grid{
+        grid-template-columns:1fr;
+      }
+
+      .feature-card h4{
+        font-size:.92rem;
+      }
+
+      .feature-card p{
+        font-size:.88rem;
+      }
+
+      .cart-panel{
+        width:100vw;
+      }
+
+      .cart-head,
+      .cart-body,
+      .cart-foot{
+        padding-left:14px;
+        padding-right:14px;
+      }
+
+      .cart-item{
+        grid-template-columns:64px 1fr;
+      }
+
+      .cart-item img{
+        width:64px;
+        height:64px;
+      }
+
+      .cart-item h4{
+        font-size:.92rem;
+      }
+
+      .cart-item small{
+        font-size:.82rem;
+      }
+
+      .field{
+        padding:12px 14px;
+        font-size:.95rem;
+      }
+
+      .cart-fab{
+        width:54px;
+        height:54px;
+        right:14px;
+        bottom:14px;
+        border-radius:16px;
+      }
+
+      .cart-count{
+        min-width:22px;
+        height:22px;
+        top:-7px;
+        right:-7px;
+        font-size:.72rem;
+      }
+
+      .toast{
+        right:12px;
+        bottom:84px;
+        max-width:calc(100vw - 24px);
+        font-size:.9rem;
+      }
+    }
+
+    @media(max-width:420px){
+      .thumbs{
+        grid-template-columns:repeat(4,minmax(0,1fr));
+      }
+
+      .btn{
+        font-size:.92rem;
+      }
+
+      .eyebrow{
+        font-size:.85rem;
+        padding:8px 12px;
+      }
+
+      .header-link{
+        font-size:.84rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="brand" aria-label="Ir al inicio">
+        <span class="brand-mark">
+          <img src="img/logo.png" alt="Bytech logo">
+        </span>
+        <span>Bytech</span>
+      </a>
+
+      <a href="#" class="header-link" id="backToCatalogTop">
+        <i class="fa-solid fa-arrow-left"></i>
+        Volver al catálogo
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">
+        <i class="fa-solid fa-box"></i>
+        Producto premium
+      </span>
+
+      <h1 id="pageTitle">Producto</h1>
+      <p id="pageSubtitle">Cargando información del producto...</p>
+
+      <div class="page-grid">
+        <section class="gallery-card glass reveal">
+          <div class="main-image">
+            <span class="image-badge" id="badgeText">Recomendado</span>
+            <img id="mainImage" src="" alt="Imagen principal del producto" loading="eager" decoding="async">
+          </div>
+          <div class="thumbs" id="thumbs"></div>
+        </section>
+
+        <aside class="info-card glass reveal">
+          <div class="product-top">
+            <div>
+              <h2 id="productName">Producto</h2>
+              <div class="product-subtitle" id="subtitleText">
+                <i class="fa-solid fa-circle-check"></i>
+                Disponible
+              </div>
+            </div>
+            <div class="price" id="priceText">₡0</div>
+          </div>
+
+          <div class="description" id="descriptionText"></div>
+
+          <div class="actions">
+            <button class="btn btn-primary" id="addToCartBtn" type="button">
+              <i class="fa-solid fa-cart-plus"></i>
+              Agregar al carrito
+            </button>
+
+            <a class="btn btn-whatsapp" id="whatsappLink" href="#" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp"></i>
+              Consultar por WhatsApp
+            </a>
+
+            <a href="#" class="btn btn-primary" id="backToCatalogBottom">
+              <i class="fa-solid fa-arrow-left"></i>
+              Seguir viendo productos
+            </a>
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini">
+              <strong>Marca</strong>
+              <span id="brandText">Bytech</span>
+            </div>
+            <div class="mini">
+              <strong>Estado</strong>
+              <span id="statusText">Disponible</span>
+            </div>
+            <div class="mini">
+              <strong>Stock</strong>
+              <span id="stockText">0 unidades</span>
+            </div>
+          </div>
+
+          <div class="features-wrap" id="featuresSection" hidden>
+            <h3 class="section-title">Características principales</h3>
+            <div class="features-grid" id="featuresGrid"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  © 2026 Bytech · Todos los derechos reservados
+</footer>
+
+<button class="cart-fab" id="cartFab" type="button" aria-label="Abrir carrito" aria-expanded="false" aria-controls="cartPanel">
+  <i class="fa-solid fa-cart-shopping"></i>
+  <span class="cart-count" id="cartCount">0</span>
+</button>
+
+<div class="cart-backdrop" id="cartBackdrop" aria-hidden="true"></div>
+
+<aside class="cart-panel" id="cartPanel" aria-label="Carrito de compras">
+  <div class="cart-head">
+    <div>
+      <h3 style="margin:0 0 4px;">Tu carrito</h3>
+      <small style="color:var(--muted)">Revisa los productos antes de enviar</small>
+    </div>
+    <button class="btn btn-primary" id="closeCartBtn" type="button" style="min-width:0;padding:10px 12px;">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <div class="cart-body">
+    <div id="cartEmpty" class="cart-empty">Tu carrito está vacío.</div>
+    <div id="cartItems"></div>
+  </div>
+
+  <div class="cart-foot">
+    <div class="checkout-fields">
+      <input id="buyerName" class="field" type="text" placeholder="Nombre para el pedido" aria-label="Nombre para el pedido">
+      <input id="buyerPhone" class="field" type="tel" placeholder="Teléfono de contacto" aria-label="Teléfono de contacto">
+      <textarea id="buyerAddress" class="field" placeholder="Dirección de entrega" aria-label="Dirección de entrega"></textarea>
+      <button class="btn btn-primary" id="clearCartBtn" type="button">
+        <i class="fa-solid fa-trash"></i>
+        Vaciar carrito
+      </button>
+    </div>
+
+    <div class="summary">
+      <div class="summary-row"><span>Subtotal</span><strong id="subtotal">₡0</strong></div>
+      <div class="summary-row"><span>Envío</span><strong>Se coordina</strong></div>
+      <div class="summary-row total"><span>Total</span><strong id="total">₡0</strong></div>
+    </div>
+
+    <div class="checkout-fields">
+      <button class="btn btn-primary" id="emailCheckoutBtn" type="button">
+        <i class="fa-solid fa-envelope"></i> Enviar por correo
+      </button>
+      <button class="btn btn-whatsapp" id="whatsappCheckoutBtn" type="button">
+        <i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp
+      </button>
+    </div>
+  </div>
+</aside>
+
+<script src="js/cart.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id') || params.get('slug');
+
+    const mainImage = document.getElementById('mainImage');
+    const thumbs = document.getElementById('thumbs');
+
+    const pageTitle = document.getElementById('pageTitle');
+    const pageSubtitle = document.getElementById('pageSubtitle');
+    const productName = document.getElementById('productName');
+    const badgeText = document.getElementById('badgeText');
+    const subtitleText = document.getElementById('subtitleText');
+    const priceText = document.getElementById('priceText');
+    const descriptionText = document.getElementById('descriptionText');
+    const brandText = document.getElementById('brandText');
+    const statusText = document.getElementById('statusText');
+    const stockText = document.getElementById('stockText');
+    const whatsappLink = document.getElementById('whatsappLink');
+    const addToCartBtn = document.getElementById('addToCartBtn');
+
+    const featuresSection = document.getElementById('featuresSection');
+    const featuresGrid = document.getElementById('featuresGrid');
+
+    const cartFab = document.getElementById('cartFab');
+    const cartPanel = document.getElementById('cartPanel');
+    const cartBackdrop = document.getElementById('cartBackdrop');
+    const closeCartBtn = document.getElementById('closeCartBtn');
+
+    const imageCandidates = ['png', 'webp', 'jpg', 'jpeg'];
+
+    function formatPrice(price) {
+      return `₡${Number(price || 0).toLocaleString('es-CR')}`;
+    }
+
+    function slugify(text) {
+      return String(text || '')
+        .trim()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+
+    function placeholderDataUri(text) {
+      const safe = String(text || 'Producto')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#0f1729"/>
+              <stop offset="100%" stop-color="#101b33"/>
+            </linearGradient>
+          </defs>
+          <rect width="800" height="800" rx="48" fill="url(#g)"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                fill="#dfe7f4" font-size="40" font-family="Inter, Arial, sans-serif">${safe}</text>
+        </svg>`;
+
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    function hasFileExtension(path) {
+      return /\.[a-z0-9]+$/i.test(String(path || '').split('?')[0]);
+    }
+
+    async function resolveImage(source) {
+      const base = String(source || '').trim();
+      if (!base) return null;
+
+      const candidates = [];
+
+      if (hasFileExtension(base)) {
+        candidates.push(base);
+      } else {
+        candidates.push(base);
+        for (const ext of imageCandidates) {
+          candidates.push(`${base}.${ext}`);
+        }
+      }
+
+      for (const path of candidates) {
+        const exists = await new Promise(resolve => {
+          const img = new Image();
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = path;
+        });
+
+        if (exists) return path;
+      }
+
+      return null;
+    }
+
+    function setWhatsAppLink(product) {
+      const text = product.whatsappText || `Hola, quiero información sobre ${product.title}.`;
+      whatsappLink.href = `https://wa.me/50660399665?text=${encodeURIComponent(text)}`;
+    }
+
+    function syncCartFab() {
+      const isOpen = cartPanel.classList.contains('open');
+      cartFab.classList.toggle('hide', isOpen);
+      cartFab.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    function closeCart() {
+      cartPanel.classList.remove('open');
+      cartBackdrop.classList.remove('open');
+      syncCartFab();
+    }
+
+    cartFab.addEventListener('click', () => {
+      cartPanel.classList.add('open');
+      cartBackdrop.classList.add('open');
+      syncCartFab();
+    });
+
+    closeCartBtn.addEventListener('click', closeCart);
+    cartBackdrop.addEventListener('click', closeCart);
+
+    const cartObserver = new MutationObserver(syncCartFab);
+    cartObserver.observe(cartPanel, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function renderFeatures(features) {
+      featuresGrid.innerHTML = '';
+
+      const list = Array.isArray(features) ? features.filter(Boolean) : [];
+      if (!list.length) {
+        featuresSection.hidden = true;
+        return;
+      }
+
+      featuresSection.hidden = false;
+
+      list.forEach((feature) => {
+        const card = document.createElement('article');
+        card.className = 'feature-card';
+
+        const title = document.createElement('h4');
+        title.textContent = feature.title || feature.name || 'Característica';
+
+        const text = document.createElement('p');
+        text.textContent = feature.text || feature.value || (typeof feature === 'string' ? feature : '');
+
+        card.appendChild(title);
+        card.appendChild(text);
+        featuresGrid.appendChild(card);
+      });
+    }
+
+    async function setProductImages(product) {
+      let rawSources = [];
+
+      if (Array.isArray(product.gallery) && product.gallery.length) {
+        rawSources = product.gallery.slice(0, 4);
+      } else if (product.galleryBase) {
+        const base = String(product.galleryBase).replace(/\/$/, '');
+        rawSources = [1, 2, 3, 4].flatMap(n => [
+          `${base}/${n}`,
+          `${base}${n}`
+        ]);
+      } else if (product.image) {
+        rawSources = [product.image];
+      }
+
+      const resolved = [];
+      const unique = new Set();
+
+      for (const source of rawSources) {
+        const resolvedSrc = await resolveImage(source);
+        if (resolvedSrc && !unique.has(resolvedSrc)) {
+          unique.add(resolvedSrc);
+          resolved.push(resolvedSrc);
+        }
+        if (resolved.length >= 4) break;
+      }
+
+      const fallback = product.image ? product.image : placeholderDataUri(product.title);
+
+      while (resolved.length < 4) {
+        resolved.push(fallback);
+      }
+
+      mainImage.src = resolved[0] || fallback;
+      mainImage.alt = product.title;
+
+      thumbs.innerHTML = '';
+
+      resolved.slice(0, 4).forEach((src, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'thumb' + (index === 0 ? ' active' : '');
+        btn.type = 'button';
+        btn.setAttribute('aria-label', `Ver imagen ${index + 1} de ${product.title}`);
+        btn.innerHTML = `<img src="${src}" alt="${product.title} imagen ${index + 1}" loading="lazy" decoding="async">`;
+
+        btn.addEventListener('click', () => {
+          mainImage.src = src;
+          document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+          btn.classList.add('active');
+        });
+
+        thumbs.appendChild(btn);
+      });
+    }
+
+    function updateMeta(product, imageUrl) {
+      document.title = `${product.title} | Bytech`;
+
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      const ogImage = document.querySelector('meta[property="og:image"]');
+      const metaDescription = document.querySelector('meta[name="description"]');
+
+      if (ogTitle) ogTitle.setAttribute('content', `${product.title} | Bytech`);
+      if (ogDescription) ogDescription.setAttribute('content', product.description || '');
+      if (metaDescription) metaDescription.setAttribute('content', product.description || '');
+
+      if (ogImage && imageUrl) {
+        try {
+          ogImage.setAttribute('content', new URL(imageUrl, window.location.href).href);
+        } catch {
+          ogImage.setAttribute('content', imageUrl);
+        }
+      }
+    }
+
+    function getStatusLabel(product) {
+      if (typeof product.stock === 'number' && product.stock <= 0) return 'Agotado';
+      if (String(product.status || '').trim().toLowerCase() === 'inactive') return 'Inactivo';
+      if (product.status) return product.status;
+      return 'Disponible';
+    }
+
+    if (!productId) {
+      pageTitle.textContent = 'Producto no encontrado';
+      pageSubtitle.textContent = 'Falta el identificador del producto en la URL.';
+      document.querySelector('.page-grid').innerHTML =
+        '<div class="glass info-card" style="grid-column:1/-1;padding:24px;">Falta el parámetro <strong>id</strong> en la URL.</div>';
+      throw new Error('Missing product id');
+    }
+
+    fetch('./data/productos.json')
+      .then(res => {
+        if (!res.ok) throw new Error('No se pudo cargar productos.json');
+        return res.json();
+      })
+      .then(async productos => {
+        const rawProducts = Array.isArray(productos)
+          ? productos
+          : Array.isArray(productos.productos)
+            ? productos.productos
+            : Array.isArray(productos.items)
+              ? productos.items
+              : [];
+
+        const normalized = rawProducts.map(p => ({
+          id: p.id || '',
+          slug: p.slug || p.id || slugify(p.name || p.title || ''),
+          title: p.name || p.title || 'Producto',
+          brand: p.brand || 'Bytech',
+          badge: p.badge || 'Recomendado',
+          subtitle: p.subtitle || 'Disponible',
+          price: Number(p.price || 0),
+          salePrice: Number(p.salePrice || 0),
+          discount: Number(p.discount || 0),
+          description: p.description || 'Sin descripción.',
+          status: p.status || '',
+          stock: Number(p.stock ?? 0),
+          category: p.category || '',
+          subcategory: p.subcategory || '',
+          image: p.media?.cover?.trim() || p.image || '',
+          gallery: Array.isArray(p.media?.gallery)
+            ? p.media.gallery
+            : Array.isArray(p.gallery)
+              ? p.gallery
+              : [],
+          galleryBase: p.galleryBase || '',
+          whatsappText: p.whatsappText || `Hola, quiero información de ${p.name || p.title || 'este producto'}`,
+          features: Array.isArray(p.features) ? p.features : []
+        }));
+
+        const producto = normalized.find(p => p.id === productId || p.slug === productId);
+
+        const backToCatalogTop = document.getElementById('backToCatalogTop');
+        const backToCatalogBottom = document.getElementById('backToCatalogBottom');
+
+        function normalizeText(value) {
+          return String(value || '')
+            .trim()
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+        }
+
+        function goToCatalogFromProduct(product) {
+          if (!product) return;
+
+          localStorage.setItem('bytechCategory', normalizeText(product.category || 'all'));
+          localStorage.setItem('bytechSubcategory', normalizeText(product.subcategory || 'all'));
+          localStorage.setItem('bytechBrand', 'all');
+
+          window.location.href = 'categoria.html';
+        }
+
+        if (producto) {
+          backToCatalogTop?.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToCatalogFromProduct(producto);
+          });
+
+          backToCatalogBottom?.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToCatalogFromProduct(producto);
+          });
+        }
+
+        if (!producto) {
+          pageTitle.textContent = 'Producto no encontrado';
+          pageSubtitle.textContent = 'No se encontró el producto solicitado.';
+          document.querySelector('.page-grid').innerHTML =
+            '<div class="glass info-card" style="grid-column:1/-1;padding:24px;">Producto no encontrado.</div>';
+          return;
+        }
+
+        const soldOut = producto.stock <= 0;
+        const inactive = String(producto.status || '').trim().toLowerCase() === 'inactive';
+
+        pageTitle.textContent = producto.title;
+        pageSubtitle.textContent = producto.description;
+        productName.textContent = producto.title;
+        badgeText.textContent = producto.badge || 'Recomendado';
+        subtitleText.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${producto.subtitle || 'Disponible'}`;
+
+        const originalPrice = Number(producto.price || 0);
+        const salePrice = Number(producto.salePrice || 0);
+        const hasDiscount = salePrice > 0 && salePrice < originalPrice;
+
+        if (hasDiscount) {
+          const discountPercent =
+            producto.discount ||
+            (originalPrice > 0 ? Math.round(((originalPrice - salePrice) / originalPrice) * 100) : 0);
+
+          priceText.innerHTML = `
+            <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <span style="font-size:1.35rem;font-weight:800;color:#d6e7ff;">
+                ${formatPrice(salePrice)}
+              </span>
+              <span style="text-decoration:line-through;opacity:.65;font-size:1rem;color:var(--muted);">
+                ${formatPrice(originalPrice)}
+              </span>
+              <span class="pill featured">-${discountPercent}%</span>
+            </span>
+          `;
+        } else {
+          priceText.textContent = formatPrice(originalPrice);
+        }
+
+        descriptionText.textContent = producto.description;
+        brandText.textContent = producto.brand || 'Bytech';
+        statusText.textContent = getStatusLabel(producto);
+        stockText.textContent = `${producto.stock} unidad${producto.stock === 1 ? '' : 'es'}`;
+
+        setWhatsAppLink(producto);
+        renderFeatures(producto.features);
+
+        await setProductImages(producto);
+        updateMeta(producto, mainImage.src);
+
+        if (soldOut || inactive) {
+          addToCartBtn.disabled = true;
+          addToCartBtn.innerHTML = soldOut
+            ? '<i class="fa-solid fa-ban"></i> Agotado'
+            : '<i class="fa-solid fa-ban"></i> No disponible';
+        }
+
+        addToCartBtn.addEventListener('click', () => {
+          if (typeof window.addToCart === 'function' && !addToCartBtn.disabled) {
+
+            const originalPrice = Number(producto.price || 0);
+            const salePrice = Number(producto.salePrice || 0);
+
+            const finalPrice =
+              salePrice > 0 && salePrice < originalPrice
+                ? salePrice
+                : originalPrice;
+
+            window.addToCart({
+              id: producto.id,
+              slug: producto.slug,
+              name: producto.title,
+              price: finalPrice,
+              originalPrice: originalPrice,
+              salePrice: salePrice,
+              discount: Number(producto.discount || 0),
+              image: producto.image || mainImage.src,
+              stock: producto.stock
+            });
+          }
+
+          setTimeout(syncCartFab, 0);
+        });
+        syncCartFab();
+      })
+      .catch((error) => {
+        console.error(error);
+        pageTitle.textContent = 'Error';
+        pageSubtitle.textContent = 'No se pudo cargar el producto.';
+        document.querySelector('.page-grid').innerHTML =
+          '<div class="glass info-card" style="grid-column:1/-1;padding:24px;">No se pudo cargar el producto.</div>';
+      });
+  });
+</script>
+</body>
+</html>

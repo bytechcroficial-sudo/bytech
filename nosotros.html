@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sobre Nosotros | Bytech</title>
+
+  <meta name="description" content="Conoce más sobre Bytech, nuestra misión y respuestas a las preguntas frecuentes sobre compras, envíos y productos." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg:#070b14;
+      --card:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.08);
+      --text:#f4f7fb;
+      --muted:#a7b3c7;
+      --accent:#4da3ff;
+      --accent2:#7c5cff;
+      --shadow:0 24px 60px rgba(0,0,0,.35);
+      --radius:28px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(77,163,255,.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(124,92,255,.16), transparent 28%),
+        linear-gradient(180deg,#050812 0%,#09111f 45%,#070b14 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(1150px, calc(100% - 32px));
+      margin:auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(18px);
+      background:rgba(6,10,18,.75);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav{
+      height:84px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:800;
+      font-size:1.1rem;
+      letter-spacing:-.03em;
+    }
+
+    .brand-mark{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#111827,#1e293b);
+      border:1px solid rgba(255,255,255,.12);
+      padding:10px;
+      display:grid;
+      place-items:center;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.4),
+        inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .brand-mark img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      filter:
+        drop-shadow(0 0 10px rgba(255,255,255,.15))
+        brightness(1.15);
+    }
+
+    .back-btn{
+      color:var(--muted);
+      font-weight:600;
+      transition:.25s ease;
+    }
+
+    .back-btn:hover{
+      color:#fff;
+    }
+
+    .hero{
+      padding:90px 0 70px;
+      text-align:center;
+    }
+
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      backdrop-filter:blur(16px);
+    }
+
+    h1{
+      font-size:clamp(2.8rem,6vw,5rem);
+      line-height:.95;
+      letter-spacing:-.06em;
+      margin:24px auto 20px;
+      max-width:900px;
+    }
+
+    .hero p{
+      color:var(--muted);
+      font-size:1.08rem;
+      line-height:1.8;
+      max-width:760px;
+      margin:auto;
+    }
+
+    .section{
+      margin-bottom:32px;
+    }
+
+    .glass{
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+    }
+
+    .about-card{
+      padding:42px;
+    }
+
+    .about-card h2{
+      font-size:2rem;
+      margin-bottom:18px;
+      letter-spacing:-.04em;
+    }
+
+    .about-card p{
+      color:var(--muted);
+      line-height:1.9;
+      margin-bottom:18px;
+      font-size:1.02rem;
+    }
+
+    .features{
+      margin-top:30px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .feature-box{
+      padding:24px;
+      border-radius:22px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .feature-box i{
+      font-size:1.5rem;
+      margin-bottom:14px;
+      color:#8ec5ff;
+    }
+
+    .feature-box h3{
+      margin-bottom:10px;
+      font-size:1.05rem;
+    }
+
+    .feature-box p{
+      margin:0;
+      font-size:.95rem;
+      line-height:1.7;
+    }
+
+    .faq-section{
+      margin-top:40px;
+    }
+
+    .faq-title{
+      margin-bottom:22px;
+      font-size:2rem;
+      letter-spacing:-.04em;
+    }
+
+    .faq-list{
+      display:grid;
+      gap:16px;
+    }
+
+    .faq-item{
+      border-radius:24px;
+      overflow:hidden;
+    }
+
+    .faq-question{
+      width:100%;
+      border:none;
+      background:transparent;
+      color:#fff;
+      padding:24px;
+      text-align:left;
+      font-size:1rem;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      cursor:pointer;
+    }
+
+    .faq-question i{
+      transition:.25s ease;
+    }
+
+    .faq-item.active .faq-question i{
+      transform:rotate(180deg);
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .35s ease;
+    }
+
+    .faq-answer-content{
+      padding:0 24px 24px;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .contact-box{
+      margin-top:50px;
+      padding:40px;
+      text-align:center;
+    }
+
+    .contact-box h2{
+      font-size:2rem;
+      margin-bottom:14px;
+    }
+
+    .contact-box p{
+      color:var(--muted);
+      margin-bottom:28px;
+      line-height:1.8;
+    }
+
+    .socials{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .social-btn{
+      padding:14px 24px;
+      border-radius:18px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition:.25s ease;
+    }
+
+    .social-btn:hover{
+      transform:translateY(-4px);
+    }
+
+    .instagram{
+      background:linear-gradient(135deg,#ff4fd8,#7c5cff);
+      color:#fff;
+    }
+
+    .facebook{
+      background:linear-gradient(135deg,#1877f2,#4da3ff);
+      color:#fff;
+    }
+
+    .tiktok{
+  background:linear-gradient(135deg,#111,#2b2b2b);
+  color:#fff;
+}
+
+.whatsapp{
+  background:linear-gradient(135deg,#19d66b,#10a84f);
+  color:#fff;
+}
+
+    .footer{
+      margin-top:80px;
+      padding:30px 0;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+    }
+
+    @media(max-width:900px){
+      .features{
+        grid-template-columns:1fr;
+      }
+
+      .about-card,
+      .contact-box{
+        padding:28px;
+      }
+    }
+
+    @media(max-width:700px){
+      .hero{
+        padding:70px 0 50px;
+      }
+
+      .nav{
+        height:76px;
+      }
+
+      h1{
+        line-height:1;
+      }
+
+      .faq-question{
+        padding:20px;
+      }
+
+      .faq-answer-content{
+        padding:0 20px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+
+      <a href="index.html" class="brand">
+        <span class="brand-mark">
+          <img src="img/logo.png" alt="Bytech Logo">
+        </span>
+        <span>Bytech</span>
+      </a>
+
+      <a href="index.html" class="back-btn">
+        ← Volver al inicio
+      </a>
+
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+
+      <div class="hero-badge">
+        <i class="fa-solid fa-headphones"></i>
+        Bytech Costa Rica
+      </div>
+
+      <h1>Pasión por el audio y la tecnología.</h1>
+
+      <p>
+        En Bytech buscamos ofrecer audífonos y accesorios con excelente calidad,
+        diseño moderno y una experiencia de compra confiable para todo Costa Rica.
+      </p>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="about-card glass">
+
+        <h2>Sobre nosotros</h2>
+
+        <p>
+          Bytech nace con la idea de ofrecer productos tecnológicos modernos,
+          especialmente audífonos premium, con una estética elegante y precios accesibles.
+        </p>
+
+        <p>
+          Nos enfocamos en brindar una experiencia de compra simple, rápida y segura,
+          acompañando a cada cliente con atención personalizada y soporte directo.
+        </p>
+
+        <p>
+          Realizamos envíos a todo Costa Rica y trabajamos constantemente para agregar
+          nuevos productos y categorías a nuestra tienda.
+        </p>
+
+        <div class="features">
+
+          <div class="feature-box">
+            <i class="fa-solid fa-truck-fast"></i>
+            <h3>Envíos a todo el país</h3>
+            <p>
+              Coordinamos entregas en cualquier parte de Costa Rica.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <i class="fa-solid fa-shield-heart"></i>
+            <h3>Compra confiable</h3>
+            <p>
+              Atención personalizada y acompañamiento durante tu compra.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <i class="fa-solid fa-headphones-simple"></i>
+            <h3>Productos seleccionados</h3>
+            <p>
+              Elegimos productos con excelente calidad y buena experiencia de uso.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="faq-section">
+
+        <h2 class="faq-title">Preguntas frecuentes</h2>
+
+        <div class="faq-list">
+
+          <div class="faq-item glass">
+            <button class="faq-question">
+              ¿Realizan envíos a todo Costa Rica?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Sí. Realizamos envíos a todo el país y coordinamos la entrega según tu ubicación.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item glass">
+            <button class="faq-question">
+              ¿Cómo puedo hacer un pedido?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Puedes agregar productos al carrito y enviar tu pedido directamente por WhatsApp o correo.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item glass">
+            <button class="faq-question">
+              ¿Qué métodos de pago manejan?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Los métodos de pago se coordinan directamente al momento de confirmar el pedido.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item glass">
+            <button class="faq-question">
+              ¿Los productos tienen garantía?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Sí. Si tienes algún inconveniente con tu producto puedes contactarnos para ayudarte.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item glass">
+            <button class="faq-question">
+              ¿Cómo puedo contactarlos?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Puedes escribirnos directamente por Instagram, Facebook o WhatsApp.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="contact-box glass">
+
+<div class="socials">
+
+  <a
+    href="https://www.instagram.com/bytech.cr?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+    target="_blank"
+    class="social-btn instagram"
+  >
+    <i class="fa-brands fa-instagram"></i>
+    Instagram
+  </a>
+
+  <a
+    href="https://www.facebook.com/profile.php?id=61571983386068"
+    target="_blank"
+    class="social-btn facebook"
+  >
+    <i class="fa-brands fa-facebook-f"></i>
+    Facebook
+  </a>
+
+  <a
+    href="https://www.tiktok.com/@bytech.cr"
+    target="_blank"
+    class="social-btn tiktok"
+  >
+    <i class="fa-brands fa-tiktok"></i>
+    TikTok
+  </a>
+
+  <a
+    href="https://wa.me/50660399665"
+    target="_blank"
+    class="social-btn whatsapp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+    WhatsApp
+  </a>
+
+</div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  © 2026 Bytech · Todos los derechos reservados
+</footer>
+
+<script>
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const button = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+
+    button.addEventListener('click', () => {
+
+      const isOpen = item.classList.contains('active');
+
+      faqItems.forEach(otherItem => {
+        otherItem.classList.remove('active');
+        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+
+    });
+  });
+</script>
+
+</body>
+</html>

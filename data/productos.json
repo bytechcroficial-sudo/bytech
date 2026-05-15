@@ -1,0 +1,218 @@
+[
+  {
+    "id": "angelears-libra",
+    "name": "Angelears Libra",
+    "brand": "KZ Acoustics",
+    "category": "Audio",
+    "subcategory": "Audifono",
+    "price": 21000,
+    "stock": 5,
+    "status": "active",
+    "featured": true,
+    "badge": "Calidad",
+    "subtitle": "Audifono",
+    "description": "Ofrece un rango de frecuencia ultra-ancho para un sonido detallado y potente.",
+    "media": {
+      "cover": "/public/images/audifono/angelears-libra/cover.png",
+      "gallery": [
+        "/public/images/audifono/angelears-libra/1.jpg",
+        "/public/images/audifono/angelears-libra/2.png",
+        "/public/images/audifono/angelears-libra/3.jpg",
+        "/public/images/audifono/angelears-libra/4.jpg"
+      ]
+    },
+    "whatsappText": "Hola, quiero información del Angelears Libra",
+    "features": [
+      {
+        "title": "Cable Reemplazable",
+        "text": "Diseño de 2 pines que permite cambiar el cable o añadir adaptadores Bluetooth."
+      },
+      {
+        "title": "Afinación HiFi",
+        "text": "Curvas acústicas optimizadas para una claridad superior y fidelidad profesional."
+      },
+      {
+        "title": "Diseño Ergonómico",
+        "text": "Forma tipo monitor (IEM) que se ajusta cómodamente al oído con buen aislamiento."
+      }
+    ]
+  },
+  {
+    "id": "bc01-pro",
+    "name": "BC01 Pro",
+    "brand": "CCZ Harmony",
+    "category": "Audio",
+    "subcategory": "Audifono",
+    "price": 25000,
+    "stock": 5,
+    "status": "active",
+    "featured": true,
+    "badge": "Calidad",
+    "subtitle": "Sonido Nitido",
+    "description": "Combina un controlador dinámico (DD) para bajos potentes con una armadura balanceada (BA) para agudos ultra detallados.",
+    "media": {
+      "cover": "/public/images/audifono/bc01-pro/cover.jpg",
+      "gallery": [
+        "/public/images/audifono/bc01-pro/1.jpg",
+        "/public/images/audifono/bc01-pro/2.jpg",
+        "/public/images/audifono/bc01-pro/3.jpg",
+        "/public/images/audifono/bc01-pro/4.png"
+      ]
+    },
+    "whatsappText": "Hola, quiero información del BC01 Pro",
+    "features": [
+      {
+        "title": "Construcción de Élite",
+        "text": "Cubierta de aleación de zinc resistente y cuerpo de policarbonato ligero para máxima durabilidad y estética."
+      },
+      {
+        "title": "Cable Profesional",
+        "text": "Cable de cobre 5N OFC de 4 hilos que garantiza sonido sin latencia y es resistente a enredos."
+      },
+      {
+        "title": "Acústica de Escenario",
+        "text": "Diseño que crea un campo sonoro amplio y natural, ideal para captar cada detalle de la música."
+      },
+      {
+        "title": "Diseño Ergonómico",
+        "text": "Forma optimizada para ofrecer comodidad durante horas y un aislamiento acústico superior."
+      }
+    ]
+  },
+  {
+    "id": "kzcasecuadrado",
+    "name": "Case Cuadrado",
+    "brand": "KZ Acoustics",
+    "category": "Audio",
+    "subcategory": "Accesorios",
+    "price": 3500,
+    "salePrice": 2900,
+    "discount": 17,
+    "stock": 10,
+    "status": "active",
+    "featured": false,
+    "badge": "Accesorio",
+    "subtitle": "Protección",
+    "description": "Estuche protector premium con exterior resistente y diseño elegante.",
+    "media": {
+      "cover": "/public/images/accesorios/kzcasecuadrado/cover.png",
+      "gallery": [
+        "/public/images/accesorios/kzcasecuadrado/1.png",
+        "/public/images/accesorios/kzcasecuadrado/2.png",
+        "/public/images/accesorios/kzcasecuadrado/3.png",
+        "/public/images/accesorios/kzcasecuadrado/4.jpg"
+      ]
+    },
+    "whatsappText": "Hola, quiero información del Case Cuadrado",
+    "features": []
+  },
+  {
+    "id": "kzcaseovalado",
+    "name": "Case Ovalado",
+    "brand": "KZ Acoustics",
+    "category": "Audio",
+    "subcategory": "Accesorios",
+    "price": 3100,
+    "stock": 10,
+    "status": "active",
+    "featured": false,
+    "badge": "Accesorio",
+    "subtitle": "Compacto",
+    "description": "Case compacto y elegante para proteger tus audífonos.",
+    "media": {
+      "cover": "/public/images/accesorios/kzcaseovalado/cover.jpg",
+      "gallery": [
+        "/public/images/accesorios/kzcaseovalado/1.jpg",
+        "/public/images/accesorios/kzcaseovalado/2.jpg",
+        "/public/images/accesorios/kzcaseovalado/3.jpg",
+        "/public/images/accesorios/kzcaseovalado/4.jpg"
+      ]
+    },
+    "whatsappText": "Hola, quiero información del Case Ovalado",
+    "features": []
+  },
+  {
+    "id": "castor",
+    "name": "Castor",
+    "brand": "KZ Acoustics",
+    "category": "Audio",
+    "subcategory": "Audifono",
+    "price": 24000,
+    "stock": 5,
+    "status": "active",
+    "featured": true,
+    "badge": "Calidad",
+    "subtitle": "Audifono",
+    "description": "Sistema de dos altavoces para graves potentes y agudos nítidos sin interferencias.",
+    "media": {
+      "cover": "/public/images/audifono/castor/cover.png",
+      "gallery": [
+        "/public/images/audifono/castor/1.png",
+        "/public/images/audifono/castor/2.jpg",
+        "/public/images/audifono/castor/3.jpg",
+        "/public/images/audifono/castor/4.webp"
+      ]
+    },
+    "whatsappText": "Hola, quiero información del Castor",
+    "features": [
+      {
+        "title": "Sintonización Personalizada",
+        "text": "4 interruptores físicos que permiten crear hasta 16 perfiles de sonido distintos."
+      },
+      {
+        "title": "Calidad de Gama Alta",
+        "text": "Diseñados para competir con modelos profesionales en detalle y claridad acústica"
+      },
+      {
+        "title": "Diseño Profesiona",
+        "text": "Cuerpo ergonómico con placa frontal metálica y cable reemplazable de alta fidelidad."
+      },
+      {
+        "title": "Enfoque en el Producto",
+        "text": "Empaque minimalista y ecológico, priorizando la inversión en la tecnología interna."
+      }
+    ]
+  },
+  {
+    "id": "wyvern-black",
+    "name": "Wyvern Black",
+    "brand": "Celest",
+    "category": "Audio",
+    "subcategory": "Accesorios",
+    "price": 29500,
+    "stock": 5,
+    "status": "active",
+    "featured": true,
+    "badge": "Premium",
+    "subtitle": "Audifono",
+    "description": "Ofrece un sonido equilibrado con graves profundos y voces claras.",
+    "media": {
+      "cover": "/public/images/accesorios/wyvern-black/cover.jpg",
+      "gallery": [
+        "/public/images/accesorios/wyvern-black/1.jpg",
+        "/public/images/accesorios/wyvern-black/2.jpg",
+        "/public/images/accesorios/wyvern-black/3.jpg",
+        "/public/images/accesorios/wyvern-black/4.jpg"
+      ]
+    },
+    "whatsappText": "Hola, quiero información del Wyvern Black",
+    "features": [
+      {
+        "title": "Diseño Único",
+        "text": "Carcasas fabricadas con impresión 3D y una estética de escamas de dragón en color negro."
+      },
+      {
+        "title": "Afinación Harman 2019",
+        "text": "Ajustados para una experiencia auditiva natural, ideal tanto para música como para gaming."
+      },
+      {
+        "title": "Cable Desmontable",
+        "text": "Sistema de 2 pines (0.78mm) para mayor durabilidad y personalización."
+      },
+      {
+        "title": "Gran Comodidad",
+        "text": "Diseño ergonómico ligero que permite largas sesiones de uso sin fatiga"
+      }
+    ]
+  }
+]
