@@ -601,7 +601,7 @@
           <p><a href="#contacto">Contacto</a></p>
         </div>
       </div>
-      <div class="copyright">© <span id="year"></span> Bytech. Todos los derechos reservados.</div>
+      <a href="/editor" class="admin-hidden-link" tabindex="-1" aria-hidden="true">Editar</a>
     </div>
   </footer>
 
@@ -1410,7 +1410,7 @@
         }, 2500);
 
         if (clickCount >= 6) {
-          window.location.href = 'http://localhost:3000/editor.html';
+          window.location.href = '/editor';
         }
       });
     }
